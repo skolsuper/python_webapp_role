@@ -1,0 +1,10 @@
+---
+  
+- name: Install python-virtualenv
+  apt: name=python-virtualenv state=present
+
+- name: Make sure virtualenvs directory exists
+  file: dest={{ virtualenvs_dir }} state=directory
+
+- name: Create a virtualenv
+  command: virtualenv {{ virtualenv_root }} creates={{ virtualenv_root }}

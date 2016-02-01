@@ -1,0 +1,14 @@
+---
+
+- name: Install git
+  apt: name=git state=present
+
+- name: Copy deploy key
+  copy: src=git_deploy_key dest=~/git_deploy_key mode=0400
+
+- name: Get backend repo
+  git: repo={{ git_repo }}
+       dest={{ package_root }}
+       version={{ git_branch }}
+       key_file=~/git_deploy_key
+       accept_hostkey=True

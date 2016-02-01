@@ -1,0 +1,14 @@
+---
+
+- name: Install supervisor
+  apt: name=supervisor state=present
+
+- name: Update gunicorn config
+  template: src={{ item }}.j2 dest={{ package_root }}/{{ item }}
+  with_items:
+    - gunicorn.conf.py
+    - supervisor.conf
+
+- name: Link gunicorn config to supervisor
+  file: path=/etc/supervisor/conf.d/{{ package_name }}.conf src={{ package_root }}/supervisor.conf state=link
+  notify: Restart gunicorn

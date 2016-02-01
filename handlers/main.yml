@@ -1,0 +1,4 @@
+---
+
+- name: Restart gunicorn
+  supervisorctl: name={{ package_name }} state=restarted

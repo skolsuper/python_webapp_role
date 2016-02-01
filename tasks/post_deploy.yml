@@ -1,0 +1,10 @@
+---
+
+- name: Install virtualenv wrapper script
+  template: src=venv_exec.j2 dest={{ virtualenv_root }}/venv_exec
+
+- name: Run database migrations
+  command: "{{ virtualenv_root }}"/venv_exec python {{ package_root }}/manage.py migrate
+
+- name: Collect static files
+  command: "{{ virtualenv_root }}"/venv_exec python {{ package_root }}/manage.py collectstatic --noinput

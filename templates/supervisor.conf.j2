@@ -1,0 +1,8 @@
+[program:{{ package_name }}]
+command={{ virtualenv_root }}/bin/gunicorn {{ package_name }}.wsgi:application -c {{ package_root }}/gunicorn.conf.py
+directory={{ package_root }}
+user=nobody
+autostart=true
+autorestart=true
+redirect_stderr=true
+environment={% for key, value in production_env_vars.iteritems() %}{{key}}="{{value}}"{% if not loop.last %},{% endif %}{% endfor %}

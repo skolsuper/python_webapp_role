@@ -1,0 +1,20 @@
+---
+
+gunicorn_address: 127.0.0.1
+gunicorn_port: 8000
+
+package_root: /webapps/{{ package_name }}
+
+virtualenvs_dir: /venvs
+virtualenv_root: "{{ virtualenvs_dir }}/{{ package_name }}"
+
+django_log_dir: /var/log/django/{{ package_name }}
+django_log_file: debug.log
+
+requirements_file: {{ package_root }}/requirements.txt
+
+app_apt_dependencies:
+  - python-dev    # required for many packages
+  - libpq-dev     # for psycopg2
+  - libjpeg8-dev  # for Pillow
+  - zlib1g-dev    # "

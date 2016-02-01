@@ -1,0 +1,4 @@
+import multiprocessing
+
+bind = "{{ gunicorn_address }}:{{ gunicorn_port }}"
+workers = multiprocessing.cpu_count() * 2 + 1

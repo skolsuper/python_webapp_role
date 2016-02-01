@@ -1,0 +1,7 @@
+---
+
+- name: create log dir
+  file: path={{ django_log_dir }} state=directory
+
+- name: create log files
+  file: path={{ django_log_dir }}/{{ django_log_file }} state=touch mode=0666

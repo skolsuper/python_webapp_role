@@ -1,0 +1,8 @@
+---
+
+- name: "{{ package_name }} apt dependencies"
+  apt: name={{item}} state=present
+  with_items: "{{ app_apt_dependencies }}"
+
+- name: install pip dependencies
+  pip: requirements={{ requirements_file }} virtualenv={{ virtualenv_root }}

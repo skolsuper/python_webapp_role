@@ -1,0 +1,8 @@
+---
+
+- include: virtualenv.yml
+- include: git_deploy.yml
+- include: dependencies.yml
+- include: log.yml
+- include: post_deploy.yml
+- include: gunicorn.yml
