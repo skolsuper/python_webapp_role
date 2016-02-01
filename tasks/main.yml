@@ -2,7 +2,11 @@
 
 - include: virtualenv.yml
 - include: git_deploy.yml
+  when: "{{ git_repo }}"
+- include: tarball_deploy.yml
+  when: "{{ package_tarball }}"
 - include: dependencies.yml
 - include: log.yml
-- include: post_deploy.yml
+- include: django.yml
+  when: "{{ django_app }}"
 - include: gunicorn.yml
