@@ -2,11 +2,11 @@
 
 - include: virtualenv.yml
 - include: git_deploy.yml
-  when: "{{ git_repo }}"
+  when: git_repo is defined
 - include: tarball_deploy.yml
-  when: "{{ package_tarball }}"
+  when: package_tarball is defined
 - include: dependencies.yml
 - include: log.yml
 - include: django.yml
-  when: "{{ django_app }}"
+  when: django_app
 - include: gunicorn.yml
