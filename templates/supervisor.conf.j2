@@ -1,5 +1,5 @@
 [program:{{ package_name }}]
-command={{ virtualenv_root }}/bin/gunicorn {{ package_name }}.wsgi:application -c {{ package_root }}/gunicorn.conf.py
+command={{ virtualenv_root }}/bin/gunicorn {{ wsgi_application }} -c {{ package_root }}/gunicorn.conf.py
 directory={{ package_root }}
 user=nobody
 autostart=true

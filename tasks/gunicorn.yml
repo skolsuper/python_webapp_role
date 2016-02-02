@@ -8,7 +8,7 @@
   with_items:
     - gunicorn.conf.py
     - supervisor.conf
+  notify: Restart gunicorn
 
 - name: Link gunicorn config to supervisor
   file: path=/etc/supervisor/conf.d/{{ package_name }}.conf src={{ package_root }}/supervisor.conf state=link
-  notify: Restart gunicorn
