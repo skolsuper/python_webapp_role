@@ -6,3 +6,4 @@
 
 - name: Install {{ package_name }} package
   pip: name={{ package_upload.dest }}[prod] virtualenv={{ virtualenv_root }}
+  notify: Restart gunicorn

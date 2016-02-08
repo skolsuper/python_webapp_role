@@ -1,4 +1,12 @@
 ---
 
 - name: Restart gunicorn
+  command: supervisorctl reread
+  notify: Restart gunicorn pt2
+
+- name: Restart gunicorn pt2
+  command: supervisorctl update
+  notify: Restart gunicorn pt3
+
+- name: Restart gunicorn pt3
   supervisorctl: name={{ package_name }} state=restarted

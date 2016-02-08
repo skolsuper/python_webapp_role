@@ -12,3 +12,4 @@
        version={{ git_branch }}
        key_file=~/git_deploy_key
        accept_hostkey=True
+  notify: Restart gunicorn
